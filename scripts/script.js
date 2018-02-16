@@ -6,7 +6,7 @@ const Mix = (function () {
 
   function render() {
     let viewEvents = Store.events;
-    const eventListView = generateEvents(viewEvents);
+    const eventListView = generateEventItems(viewEvents);
 
     const groupsList = Store.splitArr(eventListView, 4)
 
@@ -14,7 +14,8 @@ const Mix = (function () {
     $('.deck-two').html(groupsList[1]);
     $('.deck-three').html(groupsList[2]);
 
-    const eventInfoView = generateEvents(viewEvents)
+    const eventInfoView = generateEventLists(viewEvents)
+    console.log(eventInfoView);
     $('.events-row-one').html(eventInfoView);
     // const groupsEvents = Store.splitArr(eventInfoView, 4)
     // console.log(groupsEvents);
@@ -25,24 +26,24 @@ const Mix = (function () {
 
   function generateEventList(item) {
 
-    if (Store.eventsPage) {
-
-      return (`
+    return (`
       <div class="col">
         <div class="card" style="width: 20rem;">
           <img class="card-img-top" src="${item.image}" alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h4 class="card-title">${item.description}</h4>
+            <p class="card-text"></p>
             <a href="#" class="btn btn-primary">I'm Going!</a>
           </div>
         </div>
       </div>
   `);
-    }
 
-    else {
-      return (`
+  }
+
+  function generateEventItem(item) {
+
+    return (`
     <a href = "#">
     <div class="card card-nav-tabs" style="width: 20rem;">
     <div class="card-header card-header-success">
@@ -51,17 +52,23 @@ const Mix = (function () {
   </div>
   </a>
       `);
-    }
 
   }
 
   function handleEventsPageClicked() {
-    $('.events-page').on('click', function () {
-      Store.eventsPage === true;
+    $('.events-page').on('click', function (event) {
+      Store.eventsPage = true;
     });
   }
 
-  function generateEvents(events) {
+  function generateEventItems(events) {
+    return events.map(event => {
+      return generateEventItem(event);
+    });
+
+  }
+
+  function generateEventLists(events) {
     return events.map(event => {
       return generateEventList(event);
     });
