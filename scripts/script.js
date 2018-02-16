@@ -1,7 +1,11 @@
 'use strict';
 /*global Store, Api*/
 
+
 const Mix = (function () {
+
+
+
 
 
   function render() {
@@ -15,12 +19,7 @@ const Mix = (function () {
     $('.deck-three').html(groupsList[2]);
 
     const eventInfoView = generateEventLists(viewEvents)
-    console.log(eventInfoView);
-    $('.events-row-one').html(eventInfoView);
-    // const groupsEvents = Store.splitArr(eventInfoView, 4)
-    // console.log(groupsEvents);
-    // $('.events-row-one').html(groupsEvents[0])
-
+    $('.events').html(eventInfoView);
 
   }
 
@@ -32,7 +31,14 @@ const Mix = (function () {
           <img class="card-img-top" src="${item.image}" alt="Card image cap">
           <div class="card-body">
             <h4 class="card-title">${item.description}</h4>
-            <p class="card-text"></p>
+            <p class="card-text">
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce tincidunt felis ultrices, varius nibh et, dapibus nulla.</p>
+            <p>${item.location}, ${item.city}</p>
+            <p>Duration: ${item.duration} hours</p>
+            <b>Date: ${item.date}</b>
+            <p><b>Time: ${item.time}</b></p>
+            <div id="map"></div>
+            </p>
             <a href="#" class="btn btn-primary">I'm Going!</a>
           </div>
         </div>
@@ -44,7 +50,7 @@ const Mix = (function () {
   function generateEventItem(item) {
 
     return (`
-    <a href = "#">
+    <a href = "./events.html">
     <div class="card card-nav-tabs" style="width: 20rem;">
     <div class="card-header card-header-success">
      ${item.description}
@@ -52,31 +58,22 @@ const Mix = (function () {
   </div>
   </a>
       `);
-
-  }
-
-  function handleEventsPageClicked() {
-    $('.events-page').on('click', function (event) {
-      Store.eventsPage = true;
-    });
   }
 
   function generateEventItems(events) {
     return events.map(event => {
       return generateEventItem(event);
     });
-
   }
 
   function generateEventLists(events) {
     return events.map(event => {
       return generateEventList(event);
     });
-
   }
 
   function bindEventListeners() {
-    handleEventsPageClicked();
+
 
   }
 

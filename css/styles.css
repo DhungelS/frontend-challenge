@@ -39,6 +39,17 @@ body {
   margin-bottom: 25px;
 }
 
+.map {
+  height: 200px;
+  width: 200px;
+  border: 1px solid red;
+}
+
+.footer {
+  height: 60px;
+  color: white;
+}
+
 @media (max-width: 768px){
 
 }

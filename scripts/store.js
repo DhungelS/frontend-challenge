@@ -12,7 +12,6 @@ const Store = (function () {
   return {
     events: [],
     splitArr,
-    eventsPage: false
   };
 
 }());
