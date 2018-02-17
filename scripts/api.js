@@ -6,9 +6,10 @@ const Api = (function () {
 
   const getItems = function () {
     return $.ajax({
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      crossDomain: true,
       type: 'GET',
       url: BASE_URL,
-      dataType: 'json'
     });
   };
 
