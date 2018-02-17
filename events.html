@@ -11,6 +11,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./css/material-UI/material-kit.min.css">
   <link rel="stylesheet" href="./css/styles.css">
+  <script>
+    var map;
+    function genMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+  </script>
 </head>
 
 <body>
@@ -34,10 +43,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#nav-mix-info">What is a MIX?</a>
+              <a class="nav-link" href="./index.html">What is a MIX?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#nav-mix-list">Current MIXs</a>
+              <a class="nav-link" href="./index.html">Current MIXs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./events.html">Events</a>
@@ -53,14 +62,30 @@
     <section>
       <div class="container">
         <div class="row events">
-
         </div>
-      </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Location</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <div id="map"></div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer bg-success">
+  <footer class="footer bg-light">
     <div class="container">
       <nav class="pull-left">
         <ul>
@@ -71,7 +96,7 @@
       </nav>
       <nav class="pull-right">
         <ul>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+          <li class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
         </ul>
       </nav>
     </div>
@@ -84,6 +109,8 @@
   <script src="./scripts/store.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1V0ypKib5n_vHtVPZtlxgY-mnqQF1Fo8&callback=genMap"
+  async defer></script>
 </body>
 
 </html>

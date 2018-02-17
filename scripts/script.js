@@ -4,10 +4,6 @@
 
 const Mix = (function () {
 
-
-
-
-
   function render() {
     let viewEvents = Store.events;
     const eventListView = generateEventItems(viewEvents);
@@ -37,9 +33,13 @@ const Mix = (function () {
             <p>Duration: ${item.duration} hours</p>
             <b>Date: ${item.date}</b>
             <p><b>Time: ${item.time}</b></p>
-            <div id="map"></div>
             </p>
             <a href="#" class="btn btn-primary">I'm Going!</a>
+            
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            View Map
+            </button>
+
           </div>
         </div>
       </div>
@@ -72,14 +72,8 @@ const Mix = (function () {
     });
   }
 
-  function bindEventListeners() {
-
-
-  }
-
   return {
     render,
-    bindEventListeners
   };
 
 }());

@@ -39,7 +39,8 @@ body {
   margin-bottom: 25px;
 }
 
-.map {
+
+#map {
   height: 200px;
   width: 200px;
   border: 1px solid red;
@@ -47,10 +48,23 @@ body {
 
 .footer {
   height: 60px;
-  color: white;
+ 
 }
 
+.modal-title{
+font-size: 25px;
 
+}
+
+#test {
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+}
+
+.footer {
+  margin: 50px 0px 20px 0px
+}
 
 @media (max-width: 768px){
 
