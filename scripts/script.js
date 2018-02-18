@@ -6,7 +6,7 @@ const Mix = (function () {
 
   function render() {
     let viewEvents = Store.events;
-    const eventListView = generateEventItems(viewEvents);
+    const eventListView = generateElements(viewEvents, generateEventList);
 
     const groupsList = Store.splitArr(eventListView, 4)
 
@@ -14,12 +14,12 @@ const Mix = (function () {
     $('.deck-two').html(groupsList[1]);
     $('.deck-three').html(groupsList[2]);
 
-    const eventInfoView = generateEventLists(viewEvents)
+    const eventInfoView = generateElements(viewEvents, generateEventItem)
     $('.events').html(eventInfoView);
 
   }
 
-  function generateEventList(item) {
+  function generateEventItem(item) {
 
     return (`
       <div class="col">
@@ -47,7 +47,7 @@ const Mix = (function () {
 
   }
 
-  function generateEventItem(item) {
+  function generateEventList(item) {
 
     return (`
     <a href = "./events.html">
@@ -60,15 +60,9 @@ const Mix = (function () {
       `);
   }
 
-  function generateEventItems(events) {
+  function generateElements(events, generateItems) {
     return events.map(event => {
-      return generateEventItem(event);
-    });
-  }
-
-  function generateEventLists(events) {
-    return events.map(event => {
-      return generateEventList(event);
+      return generateItems(event);
     });
   }
 
